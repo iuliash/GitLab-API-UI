@@ -1,38 +1,130 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+.header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+
+    background-color: #6B4FBB;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header__title {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 130%;
+    margin-left: 1.5%;
+    margin-top: 0.6%;
+    margin-bottom: 0.6%;
+
+    color: #FFFFFF;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.send-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin-left: 1.5%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.form-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
-.App-link {
-  color: #61dafb;
+.form-item__title{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 85%;
+    /*margin-top: 10%;
+    margin-bottom: 5%;*/
+
+    color: #2E2E2E;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form-item__domain-input{
+    width: 175%;
+    
+    border: 1px solid #DFDFDF;
+    border-radius: 4px;
+
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 100%;
+    padding: 3.6%;
+}
+
+.form-item__token-input {
+    width: 175%;
+    
+    border: 1px solid #DFDFDF;
+    border-radius: 4px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 100%;
+    padding: 3.6%;
+}
+
+.form-item__proj-id-input{
+    width: 40%;
+    
+    border: 1px solid #DFDFDF;
+    border-radius: 4px;
+    
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 100%;
+    padding: 3.6%;
+}
+
+.form-item__state{
+    width: 150%;
+    
+    border: 1px solid #DFDFDF;
+    border-radius: 4px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 100%;
+    padding: 3.6%;
+
+    color: #919191;
+}
+
+.active {
+    color: black;
+}
+
+.date-time__item{    
+    width: 8vw;
+    
+    border: 1px solid #DFDFDF;
+    border-radius: 4px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 100%;
+    padding-left: 1.6%;
+    /*
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+
+    background: url(arrow.svg) no-repeat right white;*/
+}
+
+.date-time{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 }
