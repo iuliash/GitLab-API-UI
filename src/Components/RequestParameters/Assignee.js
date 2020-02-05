@@ -6,10 +6,27 @@ import {setParameters} from '../../Actions';
 
 
 class Assignee extends React.Component {
+    constructor(){
+        super();
+
+        this.state = {
+            assignee : ''
+        }
+    }
+
 
     setAssignee = e => {
         let request = this.props.request;
-        request.assignee = e.target.value;
+        request.assignee = this.state.assignee;
+
+        if (this.state.assignee !== '') {
+            let isNumber = parseInt(this.state.assignee);
+            if (isNaN(isNumber) === true) {
+                request.get_request +=  '&assignee_username=' + this.state.assignee;
+            } else if (isNaN(isNumber) === false) {
+                request.get_request +=  '&assignee_id=' + this.state.assignee;
+            }
+        }
         this.props.set({request: request});
     }
 
@@ -20,7 +37,9 @@ class Assignee extends React.Component {
                 <input 
                     className="form-item__assignee-input" 
                     placeholder="Assignee ID or username"
-                    onChange = {this.setAssignee}
+                    value = {this.state.assignee}
+                    onChange = {e => this.setState({assignee : e.target.value})}
+                    onBlur = {this.setAssignee}
                 />
             </div>
         )

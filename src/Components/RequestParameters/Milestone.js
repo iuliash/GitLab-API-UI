@@ -6,10 +6,23 @@ import {setParameters} from '../../Actions';
 
 
 class Milestone extends React.Component {
+    constructor(){
+        super();
+
+        this.state = {
+            milestone : ''
+        }
+    }
+
 
     setMilestone = e => {
         let request = this.props.request;
-        request.milestone = e.target.value;
+        request.milestone = this.state.milestone;
+
+        if (this.state.milestone !== '') {
+            request.get_request +=  '&milestone=' + this.state.milestone;
+        }
+
         this.props.set({request: request});
     }
 
@@ -20,7 +33,9 @@ class Milestone extends React.Component {
                 <input 
                     className="form-item__milestone-input" 
                     placeholder="Milestone title"
-                    onChange = {this.setMilestone}
+                    value = {this.state.milestone}
+                    onChange = {e => this.setState({milestone : e.target.value})}
+                    onBlur = {this.setMilestone}
                 />
             </div>
         )

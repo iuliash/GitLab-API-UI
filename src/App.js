@@ -8,7 +8,6 @@ import reducers from './Reducers'
 import Header from './Components/Header'
 import RequestParameters from './Components/RequestParameters'
 import Request from './Components/Request'
-import Answer from './Components/Answer'
 
 
 
@@ -19,7 +18,6 @@ function App() {
         <Header />
         <RequestParameters />
         <Request />
-        <Answer />
       </Provider>
     </div>
   );

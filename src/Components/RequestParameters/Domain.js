@@ -10,6 +10,7 @@ class Domain extends React.Component {
     setDomain = e => {
         let request = this.props.request;
         request.domain = e.target.value;
+        request.get_request = e.target.value;
         this.props.set({request: request});
     }
 
@@ -17,7 +18,7 @@ class Domain extends React.Component {
     render(){
         return(
             <div className = "form-item">
-                <h3 className = "title">GitLab’s instance domain</h3>
+                <h3 className = "title">GitLab’s instance domain *</h3>
                 <input 
                     className = "form-item__domain-input" 
                     placeholder = "https://gitlab.com"

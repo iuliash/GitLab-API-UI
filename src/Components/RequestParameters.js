@@ -17,8 +17,8 @@ export default function RequestParameters() {
     return(
         <div className="send-form">
             <Domain />
-            <PrivateToken />
             <ProjectID />
+            <PrivateToken />
             <State />
             <ClosedAfter />
             <ClosedBefore />

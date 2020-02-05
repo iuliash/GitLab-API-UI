@@ -10,6 +10,9 @@ class State extends React.Component {
         super();
 
         this.stateSelect = React.createRef();
+        this.state = {
+            isSet : false
+        }
     }
 
     setStateIssues = e => {
@@ -17,6 +20,15 @@ class State extends React.Component {
 
         let request = this.props.request;
         request.state = e.target.value;
+
+        if (this.state.isSet === true) {
+            let rqst = request.get_request;
+            rqst = rqst.substring(0, rqst.length - 6);
+            request.get_request = rqst + e.target.value;
+        } else {
+            request.get_request +=  '&state=' + e.target.value;
+            this.setState({isSet : true})
+        }
         this.props.set({request: request});
     }
 
