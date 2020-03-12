@@ -33,7 +33,7 @@ class ClosedBefore extends React.Component {
     render(){
         return(
             <div className="form-item">
-                <h3 className="title">Closed after</h3>
+                <h3 className="title">Closed before</h3>
                 <div className="date-time">
                     <select className="date-time__item" defaultValue={'2020'} onChange={e => {this.setDateTime('year', e)}}>
                         {years.map(year => (
