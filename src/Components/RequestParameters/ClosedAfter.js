@@ -2,7 +2,7 @@ import React from 'react'
 
 
 const years = ['2015', '2016', '2017', '2018', '2019', '2020'];
-const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const mounths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const days = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22',
     '23', '24', '25', '26', '27', '28', '29', '30', '31'];
 const hours = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
@@ -12,39 +12,86 @@ const minutes = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10
     '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59'];
 
 
-export default function ClosedAfter(props) {
+export default class ClosedAfter extends React.Component{
+    constructor(props){
+        super(props);
 
+        this.yearRef = React.createRef();
+        this.monthRef = React.createRef();
+        this.dayRef = React.createRef();
+        this.hourRef = React.createRef();
+        this.minuteRef = React.createRef();
+    }
 
-    return (
-        <div className="form-item">
-            <h3 className="title">Closed after</h3>
-            <div className="date-time">
-                <select className="date-time__item" defaultValue={'2020'} onChange={e => { props.change(e.target.value, 'closed_after', 'year') }} >
-                    {years.map(year => (
-                        <option value={year} key={year}>{year}</option>
-                    ))}
-                </select>
-                <select className="date-time__item" defaultValue={'January'} onChange={e => { props.change(e.target.value, 'closed_after', 'month') }} >
-                    {months.map(month => (
-                        <option value={month} key={month}>{month}</option>
-                    ))}
-                </select>
-                <select className="date-time__item" defaultValue={'25'} onChange={e => { props.change(e.target.value, 'closed_after', 'day') }} >
-                    {days.map(day => (
-                        <option value={day} key={day}>{day}</option>
-                    ))}
-                </select>
-                <select className="date-time__item" defaultValue={'09'} onChange={e => { props.change(e.target.value, 'closed_after', 'hour') }} >
-                    {hours.map(hour => (
-                        <option value={hour} key={hour}>{hour}</option>
-                    ))}
-                </select>
-                <select className="date-time__item" defaultValue={'21'} onChange={e => { props.change(e.target.value, 'closed_after', 'minute') }} >
-                    {minutes.map(minute => (
-                        <option value={minute} key={minute}>{minute}</option>
-                    ))}
-                </select>
+    componentDidUpdate(){
+        if (this.props.isActive) {
+            this.yearRef.current.disabled = false
+            this.yearRef.current.style.backgroundColor = 'white'
+            this.yearRef.current.style.color = 'black'
+            this.monthRef.current.disabled = false
+            this.monthRef.current.style.backgroundColor = 'white'
+            this.monthRef.current.style.color = 'black'
+            this.dayRef.current.disabled = false
+            this.dayRef.current.style.backgroundColor = 'white'
+            this.dayRef.current.style.color = 'black'
+            this.hourRef.current.disabled = false
+            this.hourRef.current.style.backgroundColor = 'white'
+            this.hourRef.current.style.color = 'black'
+            this.minuteRef.current.disabled = false
+            this.minuteRef.current.style.backgroundColor = 'white'
+            this.minuteRef.current.style.color = 'black'
+        } else {
+            this.yearRef.current.disabled = true
+            this.yearRef.current.style.backgroundColor = '#F7F8FA'
+            this.yearRef.current.style.color = '#919191'
+            this.monthRef.current.disabled = true
+            this.monthRef.current.style.backgroundColor = '#F7F8FA'
+            this.monthRef.current.style.color = '#919191'
+            this.dayRef.current.disabled = true
+            this.dayRef.current.style.backgroundColor = '#F7F8FA'
+            this.dayRef.current.style.color = '#919191'
+            this.hourRef.current.disabled = true
+            this.hourRef.current.style.backgroundColor = '#F7F8FA'
+            this.hourRef.current.style.color = '#919191'
+            this.minuteRef.current.disabled = true
+            this.minuteRef.current.style.backgroundColor = '#F7F8FA'
+            this.minuteRef.current.style.color = '#919191'
+        }
+    }
+ 
+    render(){
+        let date = new Date();
+        return (
+            <div className="form-item">
+                <h3 className="title">Closed after</h3>
+                <div className="date-time">
+                    <select ref={this.yearRef} disabled className="date-time__item" defaultValue={date.getFullYear()} onChange={e => { this.props.change(e.target.value, 'closed_after', 'year') }} >
+                        {years.map(year => (
+                            <option value={year} key={year}>{year}</option>
+                        ))}
+                    </select>
+                    <select ref={this.monthRef} disabled className="date-time__item" defaultValue={mounths[date.getMonth()]} onChange={e => { this.props.change(e.target.value, 'closed_after', 'month') }} >
+                        {mounths.map(mounth => (
+                            <option value={mounth} key={mounth}>{mounth}</option>
+                        ))}
+                    </select>
+                    <select ref={this.dayRef} disabled className="date-time__item" defaultValue={date.getDate()} onChange={e => { this.props.change(e.target.value, 'closed_after', 'day') }} >
+                        {days.map(day => (
+                            <option value={day} key={day}>{day}</option>
+                        ))}
+                    </select>
+                    <select ref={this.hourRef} disabled className="date-time__item" defaultValue={'09'} onChange={e => { this.props.change(e.target.value, 'closed_after', 'hour') }} >
+                        {hours.map(hour => (
+                            <option value={hour} key={hour}>{hour}</option>
+                        ))}
+                    </select>
+                    <select ref={this.minuteRef} disabled className="date-time__item" defaultValue={'21'} onChange={e => { this.props.change(e.target.value, 'closed_after', 'minute') }} >
+                        {minutes.map(minute => (
+                            <option value={minute} key={minute}>{minute}</option>
+                        ))}
+                    </select>
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
 }

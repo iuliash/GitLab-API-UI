@@ -1,10 +1,6 @@
 import React from 'react';
 import './App.css';
 
-import { createStore } from 'redux'
-import { Provider } from 'react-redux';
-import reducers from './Reducers'
-
 import Header from './Components/Header'
 import Domain from './Components/RequestParameters/Domain'
 import PrivateToken from './Components/RequestParameters/PrivateToken'
@@ -49,7 +45,8 @@ class App extends React.Component {
         closed_by: '',
         milestone: '',
         get_request: ''
-      }
+      }, 
+      isActive : false
     }
   }
 
@@ -78,13 +75,15 @@ class App extends React.Component {
       rqst.get_request = r;
     } else rqst.get_request = '';
     this.setState({ request: rqst });
+    if (this.state.request.domain !== '' && this.state.request.project_id !== '' && this.state.request.private_token !== '')
+      this.setState({isActive : true});
+    else this.setState({isActive : false});
     this.forceUpdate();
   }
 
   render() {
     return (
       <div className="App">
-        <Provider store={createStore(reducers)}>
           <Header />
           <div className="send-form">
             <Domain
@@ -98,27 +97,33 @@ class App extends React.Component {
             />
             <State
               change={this.changeParameters}
+              isActive={this.state.isActive}
             />
             <ClosedAfter
               change={this.changeParameters}
+              isActive={this.state.isActive}
             />
             <ClosedBefore
               change={this.changeParameters}
+              isActive={this.state.isActive}
             />
             <Assignee
               change={this.changeParameters}
+              isActive={this.state.isActive}
             />
             <ClosedBy
               change={this.changeParameters}
+              isActive={this.state.isActive}
             />
             <Milestone
               change={this.changeParameters}
+              isActive={this.state.isActive}
             />
           </div>
           <Request
             get_rqst={this.state.request.get_request}
+            change={this.changeParameters}
           />
-        </Provider>
       </div>
     );
   }

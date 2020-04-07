@@ -39,7 +39,7 @@ export default class Request extends React.Component {
                         className="get-request__input" 
                         placeholder="https://gitlab.com/api/v4/projects/12/issues?private_token=ej3-32jvdnsDfn2Ddj84e&state=closed&per_page=100"
                         value = {this.props.get_rqst}
-                        onChange = {() => {return false}}
+                        onChange={e => { this.props.change(e.target.value, 'get_request') }}
                     />
                     <button className="get-request__btn">Send request</button>
                 </form>
