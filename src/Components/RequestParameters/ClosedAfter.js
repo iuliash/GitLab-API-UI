@@ -80,12 +80,12 @@ export default class ClosedAfter extends React.Component{
                             <option value={day} key={day}>{day}</option>
                         ))}
                     </select>
-                    <select ref={this.hourRef} disabled className="date-time__item" defaultValue={'09'} onChange={e => { this.props.change(e.target.value, 'closed_after', 'hour') }} >
+                    <select ref={this.hourRef} disabled className="date-time__item" defaultValue={date.getHours()} onChange={e => { this.props.change(e.target.value, 'closed_after', 'hour') }} >
                         {hours.map(hour => (
                             <option value={hour} key={hour}>{hour}</option>
                         ))}
                     </select>
-                    <select ref={this.minuteRef} disabled className="date-time__item" defaultValue={'21'} onChange={e => { this.props.change(e.target.value, 'closed_after', 'minute') }} >
+                    <select ref={this.minuteRef} disabled className="date-time__item" defaultValue={date.getMinutes()} onChange={e => { this.props.change(e.target.value, 'closed_after', 'minute') }} >
                         {minutes.map(minute => (
                             <option value={minute} key={minute}>{minute}</option>
                         ))}

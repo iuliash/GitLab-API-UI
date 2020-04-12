@@ -12,6 +12,7 @@ import Assignee from './Components/RequestParameters/Assignee'
 import ClosedBy from './Components/RequestParameters/ClosedBy'
 import Milestone from './Components/RequestParameters/Milestone'
 import Request from './Components/Request'
+import Answer from './Components/Answer'
 
 
 
@@ -45,8 +46,9 @@ class App extends React.Component {
         closed_by: '',
         milestone: '',
         get_request: ''
-      }, 
-      isActive : false
+      },
+      isActive: false,
+      answer: ''
     }
   }
 
@@ -73,57 +75,66 @@ class App extends React.Component {
         r += '&milestone=' + rqst.milestone;
       }
       rqst.get_request = r;
+    } else if (grid === 'get_request') {
+      rqst.get_request = value;
     } else rqst.get_request = '';
     this.setState({ request: rqst });
     if (this.state.request.domain !== '' && this.state.request.project_id !== '' && this.state.request.private_token !== '')
-      this.setState({isActive : true});
-    else this.setState({isActive : false});
+      this.setState({ isActive: true });
+    else this.setState({ isActive: false });
     this.forceUpdate();
   }
 
   render() {
     return (
       <div className="App">
+        <div>
           <Header />
-          <div className="send-form">
-            <Domain
-              change={this.changeParameters}
-            />
-            <ProjectID
-              change={this.changeParameters}
-            />
-            <PrivateToken
-              change={this.changeParameters}
-            />
-            <State
-              change={this.changeParameters}
-              isActive={this.state.isActive}
-            />
-            <ClosedAfter
-              change={this.changeParameters}
-              isActive={this.state.isActive}
-            />
-            <ClosedBefore
-              change={this.changeParameters}
-              isActive={this.state.isActive}
-            />
-            <Assignee
-              change={this.changeParameters}
-              isActive={this.state.isActive}
-            />
-            <ClosedBy
-              change={this.changeParameters}
-              isActive={this.state.isActive}
-            />
-            <Milestone
-              change={this.changeParameters}
-              isActive={this.state.isActive}
+          <div className="request-parameters">
+            <div className="send-form">
+              <Domain
+                change={this.changeParameters}
+              />
+              <ProjectID
+                change={this.changeParameters}
+              />
+              <PrivateToken
+                change={this.changeParameters}
+              />
+              <State
+                change={this.changeParameters}
+                isActive={this.state.isActive}
+              />
+              <ClosedAfter
+                change={this.changeParameters}
+                isActive={this.state.isActive}
+              />
+              <ClosedBefore
+                change={this.changeParameters}
+                isActive={this.state.isActive}
+              />
+              <Assignee
+                change={this.changeParameters}
+                isActive={this.state.isActive}
+              />
+              <ClosedBy
+                change={this.changeParameters}
+                isActive={this.state.isActive}
+              />
+              <Milestone
+                change={this.changeParameters}
+                isActive={this.state.isActive}
+              />
+            </div>
+            <Answer
+              issues={this.state.answer}
             />
           </div>
           <Request
             get_rqst={this.state.request.get_request}
-            change={this.changeParameters}
+            setAnswer={data => { this.setState({ answer: data }) }}
           />
+        </div>
       </div>
     );
   }

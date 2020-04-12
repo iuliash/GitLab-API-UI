@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 .App {
-    margin-bottom: 2.4vw;
+    display: flex;
+    flex-direction: column;
+
 }
 
 .header {
@@ -9,6 +11,7 @@
     width: 100%;
     align-items: center;
     justify-content: space-between;
+    position: fixed;
 
     background-color: #6B4FBB;
 }
@@ -23,6 +26,13 @@
     margin-bottom: 0.6%;
 
     color: #FFFFFF;
+}
+
+.request-parameters{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 56px;
+    
 }
 
 .header-info{
@@ -50,6 +60,7 @@
     align-items: flex-start;
 
     margin-left: 16px;
+    margin-bottom: 7.6vh;
 }
 
 .form-item {
@@ -63,7 +74,6 @@
     font-style: normal;
     font-weight: bold;
     font-size: 85%;
-    margin-top: 16px;
     margin-bottom: 8px;
 
     color: #2E2E2E;
@@ -82,6 +92,8 @@
     font-weight: normal;
     font-size: 100%;
     padding: 3.6%;
+
+    margin-bottom: 16px;
 }
 
 .form-item__token-input {
@@ -95,6 +107,8 @@
     font-weight: normal;
     font-size: 100%;
     padding: 3.6%;
+
+    margin-bottom: 16px;
 }
 
 .form-item__proj-id-input{
@@ -108,6 +122,7 @@
     font-weight: normal;
     font-size: 100%;
     padding: 3.6%;
+    margin-bottom: 16px;
 }
 
 .form-item__state{
@@ -124,6 +139,7 @@
 
     color: #919191;
     background-color: #F7F8FA;
+    margin-bottom: 16px;
 }
 
 .date-time__item{    
@@ -143,12 +159,14 @@
 
     color: #919191;
     background-color: #F7F8FA;
+
 }
 
 .date-time{
     display: flex;
     flex-direction: row;
     width: 100%;
+    margin-bottom: 16px;
 }
 
 .form-item__assignee-input {
@@ -156,6 +174,7 @@
     
     border: 1px solid #DFDFDF;
     border-radius: 4px;
+    margin-bottom: 16px;
 
 
     font-family: Roboto;
@@ -173,6 +192,7 @@
     
     border: 1px solid #DFDFDF;
     border-radius: 4px;
+    margin-bottom: 16px;
 
 
     font-family: Roboto;
@@ -190,6 +210,7 @@
     
     border: 1px solid #DFDFDF;
     border-radius: 4px;
+    margin-bottom: 16px;
 
 
     font-family: Roboto;
@@ -203,26 +224,35 @@
 }
 
 .get-request {
+    width: 100%;
+    position: fixed;
+    z-index: 99;
+    bottom: 0;
+
+    background: #FAFAFA;
+    
+}
+
+.get-request__horizontal-line {
+    background: #DFDFDF;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.get-request__form {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
+    justify-content: space-between;
 
     margin-left: 16px;
-    margin-top: 2.4vw;
+    margin-right: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-.get-request__title {
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 85%;
-    margin-bottom: 0.6vw;
-
-    color: #2E2E2E;
-}
-
-.get-request__input {
-    width: 95%;
+.get-request__form-input {
+    width: 90%;
     
     border: 1px solid #DFDFDF;
     border-radius: 4px;
@@ -234,10 +264,9 @@
     padding: 0.5%;
 }
 
-.get-request__btn {
+.get-request__form-btn {
     width: 8%;
-    height: 34px;
-    margin-top: 1.2vw;
+    height: 5vh;
 
     background: #168F48;
     border: 1px solid #12753A;
@@ -252,27 +281,15 @@
 }
 
 .answer {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-    margin-top: 2.4vw;
-    margin-left: 1.5%;
-}
-
-.answer__title {
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 85%;
-    margin-bottom: 0.6vw;
-
-    color: #2E2E2E;
+    width: 50%;
+    margin-right: 16px;
+    margin-left: 48.5%;
+    position: fixed;
 }
 
 .answer__input {
-    width: 95%;
-    height: 272px;
+    width: 100%;
+    height: 80vh;
     margin-bottom: 0.6vw;
     
     border: 1px solid #DFDFDF;
@@ -285,13 +302,4 @@
     padding: 0.5%;
 
     resize: none;
-}
-
-.answer__ps{
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 85%;
-
-    color: #919191;
 }

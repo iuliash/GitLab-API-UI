@@ -80,12 +80,12 @@ export default class ClosedBefore extends React.Component {
                                 <option value={day} key={day}>{day}</option>
                             ))}
                         </select>
-                    <select disabled ref={this.hourRef} className="date-time__item" defaultValue={'00'} onChange={e => { this.props.change(e.target.value, 'closed_before', 'hour') }} >
+                    <select disabled ref={this.hourRef} className="date-time__item" defaultValue={date.getHours()} onChange={e => { this.props.change(e.target.value, 'closed_before', 'hour') }} >
                             {hours.map(hour => (
                                 <option value={hour} key={hour}>{hour}</option>
                             ))}
                         </select>
-                    <select disabled ref={this.minuteRef} className="date-time__item" defaultValue={'01'} onChange={e => { this.props.change(e.target.value, 'closed_before', 'minute') }}>
+                    <select disabled ref={this.minuteRef} className="date-time__item" defaultValue={date.getMinutes()} onChange={e => { this.props.change(e.target.value, 'closed_before', 'minute') }}>
                             {minutes.map(minute => (
                                 <option value={minute} key={minute}>{minute}</option>
                             ))}
